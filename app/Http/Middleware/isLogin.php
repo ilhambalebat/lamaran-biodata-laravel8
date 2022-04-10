@@ -18,11 +18,11 @@ class isLogin
     public function handle(Request $request, Closure $next)
     {
         $userRole = (!empty(Auth::user()->role)) ? Auth::user()->role : null;
-        if(!empty($userRole)):
-            if (Auth::check() && Auth::user()->role == "isAdmin"): //Admin
-                return redirect('/barang');
-            elseif(Auth::check() && Auth::user()->role == "isUser"): //User
-                return redirect('/permintaan');
+        if (!empty($userRole)) :
+            if (Auth::check() && Auth::user()->role == "isAdmin") : //Admin
+                return redirect('/pelamar');
+            elseif (Auth::check() && Auth::user()->role == "isUser") : //User
+                return redirect('/biodata');
             endif;
         endif;
         return $next($request);
